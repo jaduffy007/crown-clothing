@@ -1,6 +1,6 @@
 import React from 'react';
 
-import '.sign-up.styles';
+import './sign-up.styles.scss';
 import FormInput from '../form-input/form-input.component';
 import CustomButton from '../custom-button/custom-button.component';
 import { auth, createUserProfileDocument } from '../../firebase/firebase.utils';
@@ -47,7 +47,7 @@ class SignUp extends React.Component {
 	};
 
 	handleChange = (e) => {
-		const [name, value] = e.target;
+		const { name, value } = e.target;
 
 		this.setState({ [name]: value });
 	};
@@ -58,29 +58,41 @@ class SignUp extends React.Component {
 			<div className="sign-up">
 				<h2 className="title">I do not have an account</h2>
 				<span>Sign up with your email and password</span>
-				<form className="sign-up-form" onSubmit={this.handlesubmit}>
-					<formInput>
-						type='text' name='displayName', value={displayName}
+				<form className="sign-up-form" onSubmit={this.handleSubmit}>
+					<FormInput
+						type="text"
+						name="displayName"
+						value={displayName}
 						onChange={this.handleChange}
-						label='Display Name' required
-					</formInput>
-					<formInput>
-						type='email' name='email', value={email}
+						label="Display Name"
+						required
+					/>
+					<FormInput
+						type="email"
+						name="email"
+						value={email}
 						onChange={this.handleChange}
-						label='Email' required
-					</formInput>
-					<formInput>
-						type='password' name='password', value={password}
+						label="Email"
+						required
+					/>
+					<FormInput
+						type="password"
+						name="password"
+						value={password}
 						onChange={this.handleChange}
-						label='Password' required
-					</formInput>
-					<formInput>
-						type='password' name='confirmPassword', value={confirmPassword}
+						label="Password"
+						required
+					/>
+					<FormInput
+						type="password"
+						name="confirmPassword"
+						value={confirmPassword}
 						onChange={this.handleChange}
-						label='Confirm Password' required
-					</formInput>
+						label="Confirm Password"
+						required
+					/>
+					<CustomButton type="submit">SIGN UP</CustomButton>
 				</form>
-				<CustomButton type="submit">SIGN UP</CustomButton>
 			</div>
 		);
 	}
